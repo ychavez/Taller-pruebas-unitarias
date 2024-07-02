@@ -40,6 +40,7 @@ namespace Ordering.Test.Features
             //Assert
             Assert.Equal(id, result);
             _repositoryMock.Verify(repo => repo.AddAsync(It.IsAny<Order>()), Times.Once);
+            _mapperMock.Verify(map => map.Map<Order>(checkoutOrderCommandTest), Times.Once);
 
         }
     }
