@@ -43,5 +43,50 @@ namespace Ordering.Test.Features
             _mapperMock.Verify(map => map.Map<Order>(checkoutOrderCommandTest), Times.Once);
 
         }
+
+        [Fact]
+        public void Should_Test_Assert() 
+        {
+
+            Assert.Equal(4, 2 + 2);
+            Assert.NotEqual(5, 2 + 12);
+            Assert.True(2 + 2 == 4);
+            Assert.False(2 + 2 == 5);
+
+
+            object? obj = null;
+            Assert.Null(obj);
+
+            obj = new();
+            Assert.NotNull(obj);
+
+            var list = new List<int> { 1, 2, 3, 4 };
+
+            Assert.Contains(2, list);
+
+            Assert.DoesNotContain(5, list);
+
+            Assert.NotEmpty(list);
+
+            Assert.Empty(list.Where(x => x == 100).ToList());
+
+            Assert.IsType<int>(1);
+            Assert.IsNotType<string>(1);
+
+
+            Assert.Throws<InvalidOperationException>(() => MethodTrowsException());
+
+
+            var obj1 = new object();
+            var sameObj = obj1;
+
+            Assert.Same(sameObj, obj1);
+
+            Assert.NotSame(obj, obj1);
+
+        }
+        void MethodTrowsException() => throw new InvalidOperationException();
+
+
     }
 }
