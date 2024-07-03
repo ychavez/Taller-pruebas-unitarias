@@ -23,7 +23,7 @@ jobs:
      run: dotnet build --configuration Release
 
    - name:  Run tests
-     run: dotnet test --Configuration Release
+     run: dotnet test --configuration Release
     
 
   
